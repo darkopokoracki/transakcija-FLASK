@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+
+{% block content %}
+    <h1>Register</h1>
+    <hr>
+    <form action="/register" method="POST">
+        <p>
+            <label for="ime">Ime</label>
+            <input type="text" name="ime">
+            <span>{{ ime_error }}</span>
+        </p>
+
+        <p>
+            <label for="prezime">Prezime</label>
+            <input type="text" name="prezime">
+            <span>{{ prezime_error }}</span>
+        </p>
+
+        <p>
+            <label for="username">Username</label>
+            <input type="text" name="username">
+            <span>{{ username_unique_error }}</span>
+        </p>
+
+        <p>
+            <label for="email">Email</label>
+            <input type="email" name="email">
+            <span>{{ email_unique_error }}</span>
+        </p>
+
+        <p>
+            <label for="password">Password</label>
+            <input type="password" name="password">
+            <span>{{ password_error }}</span>
+        </p>
+
+        <p>
+            <label for="confirm">Confirm password</label>
+            <input type="password" name="confirm">
+            <span>{{ confirm_error }}</span>
+        </p>
+
+        <p>
+            <input type="submit" value="Register">
+        </p>
+    </form>
+{% endblock %}

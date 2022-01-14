@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update
+{% endblock %}
+
+{% block content %}
+    <form action="/update/{{ user[3] }}", method="POST">
+        <p>
+            <label for="ime">Ime</label>
+            <input type="text" name="ime" value="{{ user[1] }}">
+            <span>{{ ime_error }}</span>
+        </p>
+
+        <p>
+            <label for="prezime">Prezime</label>
+            <input type="text" name="prezime" value="{{ user[2] }}">
+            <span>{{ prezime_error }}</span>
+        </p>
+
+        <p>
+            <label for="username">Username</label>
+            <input type="text" name="username" value="{{ user[3] }}" readonly>
+            <span>{{ username_unique_error }}</span>
+        </p>
+
+        <p>
+            <label for="email">Email</label>
+            <input type="email" name="email" value="{{ user[4] }}" readonly>
+            <span>{{ email_unique_error }}</span>
+        </p>
+
+        {% if session['privilegija'] != 1 %}
+        <p>
+            <label for="password">Password</label>
+            <input type="password" name="password">
+            <span>{{ password_error }}</span>
+        </p>
+        {% endif %}
+
+        <p>
+            <label for="stanje">Stanje</label>
+            <input type="number" name="stanje" value="{{ user[7] }}">
+        </p>
+
+        <p>
+            <input type="submit" value="Save">
+        </p>
+    </form>
+{% endblock %}

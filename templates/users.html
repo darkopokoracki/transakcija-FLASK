@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Users
+{% endblock %}
+
+
+{% block content %}
+    <table border="1" style="border-collapse: collapse;">
+        <tr>
+            <th>ID</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Privilegija</th>
+            <th>Stanje</th>
+            <th colspan="2">Opcije</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <td>{{ user[0] }}</td>
+                <td>{{ user[1] }}</td>
+                <td>{{ user[2] }}</td>
+                <td>{{ user[3] }}</td>
+                <td>{{ user[4] }}</td>
+                {% if user[6] == 1 %}
+                    <td>Admin</td>
+                {% else %}
+                    <td>Korisnik</td>
+                {% endif %}
+                <td>{{ user[7] }}</td>
+                <td>
+                    <form action="/update/{{ user[3] }}">
+                        <input type="submit" value="Update">
+                    </form>
+                </td>
+                <td>
+                    <form action="/delete/{{ user[3] }}" method="POST">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

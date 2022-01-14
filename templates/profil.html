@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ user[1] }} {{ user[2] }} Profil
+{% endblock %}
+
+{% block content %}
+    <h1>Korisnik {{ user[1] }} {{ user[2] }}</h1>
+    <p>Username: {{ user[3] }}</p>
+    <p>Email: {{ user[4] }}</p>
+    <p>Stanje: {{ user[7] }}</p>
+
+    <div>
+        <h2>Posalji Pare</h2>
+
+        <form action="/transakcija/{{ session['username'] }}" method="POST">
+            <p>
+                <label for="izbor">Izaberite kome zelite da posaljete</label>
+                <select name="izbor">
+                    {% for u in users %}
+                        {% if session['username'] != u[3] %}
+                        <option value="{{ u[3] }}">{{ u[1] }} {{ u[2] }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </p>
+
+            <p>
+                <label for="suma">Unesite sumu novca</label>
+                <input type="number" name="suma">
+            </p>
+
+            <p>
+                <input type="submit" value="Posalji" max="{{ user[7] }}">
+            </p>
+        </form>
+    </div>
+{% endblock %}

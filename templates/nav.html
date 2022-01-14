@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Nav</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+</head>
+<body>
+    <nav>
+        <ul class="first">
+        {% if session['privilegija'] == 1 %}
+            <li><a href="/home"></a></li>
+            <li><a href="/users">Svi korisnici</a></li>
+        {% else %}
+            {% if 'username' in session %}
+            <li><a href="/profil/{{ session['username'] }}">Profil</a></li>
+            {% endif %}
+            <li><a href="/home">Home</a></li>
+        {% endif %}
+        </ul>
+        <ul class="second">
+            {% if 'username' in session %}
+                <li><a href="/logout">Logout</a></li>
+                {% if session['privilegija'] == 1 %}
+                    <li><a href="/admin/{{ session['username'] }}">Admin panel</a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</body>
+</html>

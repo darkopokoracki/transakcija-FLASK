@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+
+    padding: 2rem 0;
+    list-style: none;
+}
+
+ul.second {
+    justify-content: flex-end;
+}
+
+ul.second li {
+    margin-left: 2rem;
+}
+
+ul li a {
+    text-decoration: none;
+    font-size: 1.3rem;
+}

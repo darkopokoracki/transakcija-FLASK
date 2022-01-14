@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ admin[1] }} {{ admin[2] }} Admin
+{% endblock %}
+
+{% block content %}
+    <h1>Admin {{ admin[1] }} {{ admin[2] }}</h1>
+    <p>Username: {{ admin[3] }}</p>
+    <p>Email: {{ admin[4] }}</p>
+    <p>Stanje: {{ admin[7] }}</p>
+{% endblock %}
